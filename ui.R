@@ -43,6 +43,8 @@ shinyUI(fluidPage(
       tags$hr(),
       uiOutput("formula2")
     )
-  )
+  ),
+  
+  tags$p("Michael Tsikerdekis Creative Commons 4.0 Share-Alike, tsikerdekis@gmail.com")
   
 ))
