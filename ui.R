@@ -20,7 +20,7 @@ shinyUI(fluidPage(
     sidebarPanel(
        textInput("N", "Total actual positions/universities of interest in applying in (N).", 6788),
        textInput("w", "Pool of candidates competing against available positions (w).", 1780),
-       textInput("p", "Probability that one of the N positions/universities will have an open position (p). 892/6608", 0.134)
+       textInput("p", "Probability that one of the N positions/universities will have an open position (p). 892 open positions / N", 0.134)
     ),
     mainPanel(
       textOutput("text1"),
