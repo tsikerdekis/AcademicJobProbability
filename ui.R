@@ -35,7 +35,7 @@ shinyUI(fluidPage(
     sidebarPanel(
       textInput("xN", "Avg number of positions in a department of interest (N).", 10),
       textInput("xw", "Avg number of applicants for an open position in a department (w).", 100),
-      textInput("xp", "Probability that a position will become open. (p)", 0.134),
+      textInput("xp", "Probability that a position will become open. (p)", 0.44),
       textInput("xs", "Number of applications submitted to departments (s)", 10)
     ),
     mainPanel(
