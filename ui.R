@@ -23,10 +23,26 @@ shinyUI(fluidPage(
        textInput("p", "Probability that one of the N positions/universities will have an open position (p). 892 open positions / N", 0.134)
     ),
     mainPanel(
-      textOutput("text1"),
-      uiOutput("formula")
+      tags$h2(textOutput("text1")),
+      tags$hr(),
+      uiOutput("formula1")
     )
-    
-
+  ),
+  
+  titlePanel("Number of applications and probability of getting a job"),
+  tags$p("The general idea, is estimating the probability for a department that will have at least an open job (n=1,...) and that you will get that job compared to other applicants (w). The assumption is that candidates are chosen at random (obviously not true so problem is somewhat simplified). Based on that probability (P) then we estimate what is the probability of getting a job based on the number of applications (s)."),
+  sidebarLayout(
+    sidebarPanel(
+      textInput("xN", "Avg number of positions in a department of interest (N).", 10),
+      textInput("xw", "Avg number of applicants for an open position in a department (w).", 100),
+      textInput("xp", "Probability that a position will become open. (p)", 0.134),
+      textInput("xs", "Number of applications submitted to departments (s)", 10)
+    ),
+    mainPanel(
+      tags$h2(textOutput("text2")),
+      tags$hr(),
+      uiOutput("formula2")
+    )
   )
+  
 ))

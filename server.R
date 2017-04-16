@@ -42,7 +42,37 @@ shinyServer(function(input, output) {
     
   })
   
-  output$formula <- renderUI({
+  output$formula1 <- renderUI({
     withMathJax(paste0("Formula used: $$\\sum_{n=0}^{w-1} \\frac{n}{w} {N \\choose n} p^n (1-p)^{N-n} + \\sum_{n=w}^{N} {N \\choose n} p^n (1-p)^{N-n} $$"))
   })
+  
+  output$text2 <- renderText({ 
+    
+    N = as.numeric(input$xN)
+    w = as.numeric(input$xw)
+    p = as.numeric(input$xp)
+    s = as.numeric(input$xs)
+    
+    summedprobs1 = 0
+    for (n in 0:w-1) {
+      summedprobs1 = summedprobs1 + (n/w * choose(N, n) * p^n * (1-p)^(N-n))
+    }
+    
+    # In case  n > w, more jobs than available pool aplicants (then every subsequent probability is a given job taken)
+    summedprobs2 = 0
+    for (n in w:N) {
+      summedprobs2 = summedprobs2 + (choose(N, n) * p^n * (1-p)^(N-n))
+    }
+    
+    finalprob = 1 - (1 - round((summedprobs1 + summedprobs2),2))^(s)
+    
+    paste("You have a ",round((finalprob)*100,2),"% chance of getting a position.",sep="")
+    
+  })
+  
+  output$formula2 <- renderUI({
+    withMathJax(paste0("Formula used: $$P = \\sum_{n=0}^{w-1} \\frac{n}{w} {N \\choose n} p^n (1-p)^{N-n} + \\sum_{n=w}^{N} {N \\choose n} p^n (1-p)^{N-n} $$ \n then $$ 1-(1-P)^s $$"))
+  })
+  
+  
 })
